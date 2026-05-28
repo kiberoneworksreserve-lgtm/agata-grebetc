@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Семья Агаты | Котики, крысы и наши мечты</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: #fffaf5;
+            color: #3e2c23;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Котики и крысы – фон с лапками */
+        .paw-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.08;
+        }
+
+        /* секции */
+        section {
+            padding: 70px 0;
+            border-bottom: 1px solid rgba(210, 150, 110, 0.2);
+        }
+
+        .section-title {
+            font-size: 2.6rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 48px;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #d98c5f, #b55b2e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title i {
+            background: none;
+            color: #c97e54;
+            margin: 0 8px;
+        }
+
+        /* герой */
+        .hero {
+            padding: 60px 0 40px;
+            background: linear-gradient(145deg, #fff3e8, #ffe2d0);
+        }
+
+        .hero-flex {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            flex: 1.2;
+        }
+
+        .hero-badge {
+            background: #f3dbc8;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-weight: 700;
+            color: #b6592c;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #4a2c1b;
+        }
+
+        .hero-text h1 span {
+            color: #d27948;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin: 20px 0 28px;
+            color: #6c4e38;
+        }
+
+        .btn-dream {
+            background: #e2956b;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            box-shadow: 0 6px 14px rgba(210, 110, 60, 0.3);
+            transition: 0.2s;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-dream:hover {
+            background: #c57248;
+            transform: translateY(-4px);
+        }
+
+        .hero-avatar {
+            flex: 0.9;
+            text-align: center;
+            background: #fff0e4;
+            border-radius: 60% 40% 50% 50%;
+            padding: 25px;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.05);
+        }
+
+        .hero-avatar img {
+            max-width: 280px;
+            width: 100%;
+        }
+
+        /* карточки героев */
+        .family-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .family-card {
+            background: white;
+            border-radius: 48px;
+            padding: 32px 24px;
+            flex: 1;
+            min-width: 250px;
+            max-width: 320px;
+            text-align: center;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+            transition: all 0.25s;
+            border: 1px solid #ffdec9;
+        }
+
+        .family-card:hover {
+            transform: translateY(-8px);
+            border-color: #eccbad;
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+        }
+
+        .family-card h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .superpower {
+            background: #fce9dd;
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ba6b40;
+            margin: 12px 0;
+        }
+
+        .pet-icons {
+            margin-top: 20px;
+            font-size: 1.8rem;
+            letter-spacing: 6px;
+        }
+
+        /* мечты */
+        .dream-box {
+            background: #fffbee;
+            border-radius: 60px;
+            padding: 40px 35px;
+            margin: 20px 0;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+            border: 2px dashed #e2bc9a;
+        }
+
+        .dream-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 35px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dream-item {
+            background: white;
+            border-radius: 44px;
+            padding: 20px 30px;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.03);
+        }
+
+        .dream-item i {
+            font-size: 3rem;
+            color: #e08e60;
+        }
+
+        .dream-item h4 {
+            margin: 12px 0 6px;
+            font-size: 1.5rem;
+        }
+
+        /* галерея крысокотиков */
+        .critters {
+            background: #fff4eb;
+        }
+        .critter-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+        .critter-card {
+            background: white;
+            border-radius: 48px;
+            width: 240px;
+            text-align: center;
+            padding: 20px 15px 25px;
+            transition: 0.2s;
+        }
+        .critter-card i {
+            font-size: 4rem;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .critter-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+        .critter-card p {
+            font-size: 0.9rem;
+            color: #926e51;
+        }
+
+        /* цитата */
+        .quote-family {
+            background: #ffffffcc;
+            backdrop-filter: blur(2px);
+            border-radius: 50px;
+            padding: 30px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+
+        footer {
+            background: #2f241d;
+            color: #eedbcb;
+            padding: 50px 0 30px;
+        }
+        .footer-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        .footer-social a {
+            color: #e0bb9e;
+            font-size: 1.8rem;
+            margin-left: 20px;
+            transition: 0.2s;
+        }
+        .footer-social a:hover {
+            color: #e9a16e;
+        }
+        @media (max-width: 750px) {
+            .hero-text h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            section { padding: 50px 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Фоновые лапки котиков и крыс -->
+<div class="paw-bg">
+    <i class="fas fa-cat" style="position: absolute; top: 12%; left: 3%; font-size: 70px; opacity: 0.2;"></i>
+    <i class="fas fa-rat" style="position: absolute; bottom: 18%; right: 2%; font-size: 80px; opacity: 0.2;"></i>
+    <i class="fas fa-paw" style="position: absolute; top: 40%; left: 88%; font-size: 55px; opacity: 0.15;"></i>
+    <i class="fas fa-mouse" style="position: absolute; top: 70%; left: 5%; font-size: 60px; opacity: 0.15;"></i>
+    <i class="fas fa-cat" style="position: absolute; bottom: 8%; left: 20%; font-size: 50px; opacity: 0.12;"></i>
+</div>
+
+<!-- ГЛАВНАЯ СЕКЦИЯ: Агата и мечты -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-flex">
+            <div class="hero-text">
+                <div class="hero-badge"><i class="fas fa-star"></i> наша звёздочка</div>
+                <h1>Агата, <span>7 лет</span><br> Мечтательница ❤️</h1>
+                <p><i class="fas fa-cloud-sun"></i> Добрая, любопытная и очень нежная. Обожает котиков, крыс и путешествия. А её главная мечта — отдохнуть с мамой Ольгой, папой Виталием и ... конечно же с <strong>котиком</strong>!</p>
+                <a href="#dreams" class="btn-dream"><i class="fas fa-map-marked-alt"></i> Исполняем мечты →</a>
+            </div>
+            <div class="hero-avatar">
+                <!-- Котик + Агата в векторном виде (эмодзи-композиция) -->
+                <div style="font-size: 8rem; line-height: 1;"><i class="fas fa-girl"></i> 🐱✨</div>
+                <div style="background: #f6d5bb; border-radius: 60px; padding: 12px; margin-top: 12px;">
+                    <i class="fas fa-heart" style="color:#e4774a;"></i> <strong style="font-size: 1.4rem;">Агатуня + котик</strong> <i class="fas fa-heart" style="color:#e4774a;"></i>
+                </div>
+                <p style="margin-top: 14px;"><i class="fas fa-map-pin"></i> Хочу в Турцию, на Байкал и обнимать пушистика!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- СЕМЬЯ: Родители + брат с суперспособностями -->
+<div class="container">
+    <div class="family-grid" style="margin-top: -30px;">
+        <!-- Мама Ольга -->
+        <div class="family-card">
+            <div class="card-icon"><i class="fas fa-mother-child"></i> <i class="fas fa-ear-listen"></i></div>
+            <h3>Ольга</h3>
+            <div class="superpower"><i class="fas fa-bolt"></i> Суперспособность</div>
+            <p style="font-weight: 700; margin: 8px 0;">💬 Слышать, замечать и всё помнить</p>
+            <p>Мама чувствует настроение каждого, всегда поддержит и запомнит даже самую маленькую деталь.</p>
+            <div class="pet-icons"><i class="fas fa-cat"></i> <i class="fas fa-rat"></i> <i class="fas fa-heart"></i></div>
+        </div>
+        <!-- Папа Виталий -->
+        <div class="family-card">
+            <div class="card-icon"><i class="fas fa-dad"></i> <i class="fas fa-gamepad"></i> <i class="fas fa-utensils"></i></div>
+            <h3>Виталий</h3>
+            <div class="superpower"><i class="fas fa-bolt"></i> Суперспособность</div>
+            <p style="font-weight: 700; margin: 8px 0;">🎮 Играть & 🍳 Готовить вкусняшки</p>
+            <p>Лучший партнёр по настолкам и повелитель сладких блинчиков, печенья и уютных вечеров.</p>
+            <div class="pet-icons"><i class="fas fa-cookie-bite"></i> <i class="fas fa-joystick"></i></div>
+        </div>
+        <!-- Брат Ваня -->
+        <div class="family-card">
+            <div class="card-icon"><i class="fas fa-pen-fancy"></i> <i class="fas fa-paintbrush-pencil"></i></div>
+            <h3>Иван (Ваня)</h3>
+            <div class="superpower"><i class="fas fa-bolt"></i> Суперспособность</div>
+            <p style="font-weight: 700; margin: 8px 0;">✍️ Хорошо пишет & 🧸 лепит</p>
+            <p>Талантливый брат, который создаёт рассказы и чудесные фигурки из пластилина и глины.</p>
+            <div class="pet-icons"><i class="fas fa-palette"></i> <i class="fas fa-pencil-alt"></i></div>
+        </div>
+    </div>
+</div>
+
+<!-- СЕКЦИЯ МЕЧТЫ: ТУРЦИЯ, БАЙКАЛ, КОТИК -->
+<section id="dreams">
+    <div class="container">
+        <h2 class="section-title"><i class="fas fa-star"></i> Мечты Агаты <i class="fas fa-star"></i></h2>
+        <div class="dream-box">
+            <div class="dream-grid">
+                <div class="dream-item">
+                    <i class="fas fa-umbrella-beach"></i>
+                    <h4>Турция</h4>
+                    <p>Море, солнце, вкусные фрукты и песочные замки вместе с родителями!</p>
+                </div>
+                <div class="dream-item">
+                    <i class="fas fa-mountain"></i>
+                    <h4>Байкал</h4>
+                    <p>Чистейший лёд, нерпы и волшебная природа — настоящее приключение для всей семьи.</p>
+                </div>
+                <div class="dream-item">
+                    <i class="fas fa-cat"></i>
+                    <h4>Пушистый котик</h4>
+                    <p>Обнимашки, мурчание и верный хвостатый друг – главная мечта Агаты ❤️</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 35px;">
+                <span style="background: #eedbcb; padding: 10px 24px; border-radius: 100px; font-weight: 700;"><i class="fas fa-heart"></i> Скоро всё сбудется! <i class="fas fa-heart"></i></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- БОНУС: КОТИКИ И КРЫСЫ (дизайн) -->
+<section class="critters">
+    <div class="container">
+        <h2 class="section-title"><i class="fas fa-cat"></i> Наши любимые котики и крысы <i class="fas fa-rat"></i></h2>
+        <div class="critter-gallery">
+            <div class="critter-card">
+                <i class="fas fa-cat"></i>
+                <h4>Мурзик</h4>
+                <p>Рыжий озорник, обожает спать на коленях у Виталия.</p>
+            </div>
+            <div class="critter-card">
+                <i class="fas fa-rat"></i>
+                <h4>Соня-крыска</h4>
+                <p>Маленькая, умная и любит прятаться в рукаве у Ольги.</p>
+            </div>
+            <div class="critter-card">
+                <i class="fas fa-cat"></i>
+                <h4>Багира</h4>
+                <p>Чёрная кошечка, танцует за вкусняшку.</p>
+            </div>
+            <div class="critter-card">
+                <i class="fas fa-rat"></i>
+                <h4>Пиксель</h4>
+                <p>Крыс-путешественник, мечтает увидеть Байкал вместе с Агатой.</p>
+            </div>
+        </div>
+        <div class="quote-family">
+            <i class="fas fa-quote-left"></i> В нашем доме живут не просто питомцы — мы семья с усатыми и хвостатыми друзьями! <i class="fas fa-quote-right"></i>
+        </div>
+    </div>
+</section>
+
+<!-- ТАЛАНТЫ БРАТА + СУПЕРСПОСОБНОСТИ ВСЕХ ВМЕСТЕ -->
+<section>
+    <div class="container">
+        <h2 class="section-title"><i class="fas fa-hand-sparkles"></i> Наши суперсилы</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+            <div style="background: white; border-radius: 38px; padding: 20px 28px; flex:1; min-width: 220px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                <i class="fas fa-ear-listen" style="font-size: 2.2rem; color:#d37f53;"></i>
+                <h3 style="margin: 12px 0;">Ольга</h3>
+                <p>Замечает, когда кому-то грустно, помнит все даты и секреты детей.</p>
+            </div>
+            <div style="background: white; border-radius: 38px; padding: 20px 28px; flex:1; min-width: 220px;">
+                <i class="fas fa-utensils" style="font-size: 2.2rem; color:#d37f53;"></i>
+                <h3 style="margin: 12px 0;">Виталий</h3>
+                <p>Шеф-повар и главный игромастер. Лучшие блинчики и квесты с папой.</p>
+            </div>
+            <div style="background: white; border-radius: 38px; padding: 20px 28px; flex:1; min-width: 220px;">
+                <i class="fas fa-pen-nib" style="font-size: 2.2rem; color:#d37f53;"></i>
+                <h3 style="margin: 12px 0;">Ваня</h3>
+                <p>Пишет рассказы про крыс и котиков, лепит миниатюры для всей семьи.</p>
+            </div>
+            <div style="background: white; border-radius: 38px; padding: 20px 28px; flex:1; min-width: 220px;">
+                <i class="fas fa-dream" style="font-size: 2.2rem; color:#d37f53;"></i>
+                <h3 style="margin: 12px 0;">Агата</h3>
+                <p>Умеет дружить, мечтать и заряжать всех оптимизмом.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Цитаты и планы на котика Байкал Турция -->
+<section style="background: #ffefe2; border-radius: 60px 60px 0 0; margin-top: 20px;">
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; gap: 28px; align-items: center; justify-content: center;">
+            <div style="background: #fff5ea; border-radius: 44px; padding: 28px; max-width: 500px;">
+                <i class="fas fa-cat" style="font-size: 2.5rem; color:#b95f32;"></i>
+                <h3 style="font-size: 1.8rem; margin: 10px 0;">Котик нашей мечты</h3>
+                <p>Агата каждый день рисует пушистого друга, придумывает ему имя. Скоро в семье появится настоящий мурлыка! <i class="fas fa-paw"></i></p>
+            </div>
+            <div style="background: #fff5ea; border-radius: 44px; padding: 28px; max-width: 500px;">
+                <i class="fas fa-globe" style="font-size: 2.5rem; color:#b95f32;"></i>
+                <h3 style="font-size: 1.8rem; margin: 10px 0;">Турция + Байкал</h3>
+                <p>От южного тепла до сибирской сказки — вместе с мамой Ольгой и папой Виталием мы объедем две удивительные точки на карте.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin: 40px 0 20px;">
+            <i class="fas fa-rat"></i> <i class="fas fa-cat"></i> <i class="fas fa-heart" style="color:#cc7952;"></i> <i class="fas fa-cat"></i> <i class="fas fa-rat"></i>
+            <p style="font-weight: 600;">«Семья — это там, где тебя слышат, играют с тобой, готовят блинчики и верят в мечты»</p>
+        </div>
+    </div>
+</section>
+
+<!-- ФУТЕР с котиками и крысами -->
+<footer>
+    <div class="container">
+        <div class="footer-flex">
+            <div>
+                <h3 style="font-size: 1.6rem;"><i class="fas fa-cat"></i> Агата и её команда</h3>
+                <p>Мама Ольга · Папа Виталий · Брат Ваня</p>
+                <p><i class="fas fa-rat"></i> Крысы и котики — наши вдохновители</p>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fas fa-cat"></i></a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px; font-size: 0.85rem;">
+            © 2025 Сайт семьи Агаты — Турция, Байкал, котик и бесконечная любовь <i class="fas fa-heart" style="color:#e2946b;"></i>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // плавная прокрутка к мечтам
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === "#" || href === "") return;
+            const target = document.querySelector(href);
+            if(target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
